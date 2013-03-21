@@ -1,20 +1,21 @@
 Summary:	EffecTV effects ported to gmerlin
 Summary(pl.UTF-8):	Efekty z projektu EffecTV przeportowane do gmerlina
 Name:		gmerlin-effectv
-Version:	1.1.3
+Version:	1.2.0
 Release:	1
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/gmerlin/%{name}-%{version}.tar.gz
-# Source0-md5:	456a4ab23ffd4adc9f6d11102251f479
+# Source0-md5:	f8bc379f6678dff2aa89dbfc4e5ee0b4
+Patch0:		%{name}-am.patch
 URL:		http://gmerlin.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gmerlin-devel >= 0.4.2
+BuildRequires:	gmerlin-devel >= 1.2.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-Requires:	gmerlin >= 0.4.2
+Requires:	gmerlin >= 1.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,6 +32,7 @@ zrobić poprzez ogólne API filtrów.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # evil, sets CFLAGS basing on /proc/cpuinfo, overrides our optflags
 # (--with-cpuflags=none disables using /proc/cpuinfo, but not overriding)
